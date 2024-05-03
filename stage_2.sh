@@ -38,7 +38,8 @@ echo "Do you want to update the system now? (y/n)"
 read -r -p "> " response
 
 # Check the user's response
-if [ "$response" = "y" ] || [ "$response" = "Y" ]|| ["$response" = "yes"]
+# Fix for old Bash versions
+if [ "$response" = "y" ] || [ "$response" = "Y" ] || [ "$response" = "yes" ]; then
     # Update the system configuration
     echo "Updating the package list..."
     sudo nix-channel --update &> /dev/null
