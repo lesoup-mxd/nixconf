@@ -16,7 +16,7 @@ version=$(grep '^VERSION_ID' /etc/os-release | cut -d '=' -f 2)
 
 # Define the nixpkgs channel URL and name
 channel_url="https://nixos.org/channels/nixos-$version"
-channel_name="nixos                     "
+channel_name="nixos"
 
 # Check if the channel is already added
 if ! nix-channel --list | grep -q "$channel_name"; then
