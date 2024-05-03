@@ -3,16 +3,20 @@
 # Merge multiple branches of a Git repository into the current branch in /etc/nixos
 
 # Ensure the script is run as root
-if [ "$(id -u)"!= "0" ]; then
+if [ "$(id -u)" != "0" ]; then
    echo "This script must be run as root" 1>&2
    exit 1
 fi
 
 echo "Stage 1/2 : Adding nixpkgs channels"
 
+
+# Get the OS name and version
+version=$(grep '^VERSION_ID' /etc/os-release | cut -d '=' -f 2)
+
 # Define the nixpkgs channel URL and name
-channel_url="https://nixos.org/channels/nixpkgs"
-channel_name="nixpkgs"
+channel_url="https://nixos.org/channels/nixos-$version"
+channel_name="nixos                     "
 
 # Check if the channel is already added
 if ! nix-channel --list | grep -q "$channel_name"; then
@@ -31,13 +35,12 @@ fi
 # Update the channels
 nix-channel --update
 
-stage_2="https://raw.githubusercontent.com/lesoup-mxd/nixconf/main/stage_2.sh"
 
 # Download the script
-curl -L "$script_url" -o stage_2.sh
+curl -L https://raw.githubusercontent.com/lesoup-mxd/nixconf/main/stage_2.sh -o ./stage_2.sh
 
 # Make the script executable
-chmod +x stage_2.sh
+chmod +x ./stage_2.sh
 
 # Execute the script within nix-shell
 echo "Stage 1/2 completed."
