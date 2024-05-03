@@ -12,7 +12,7 @@ echo "Stage 1/2 : Adding nixpkgs channels"
 
 
 # Get the OS name and version
-version=$(grep '^VERSION_ID' /etc/os-release | cut -d '=' -f 2)
+version=$(grep '^VERSION_ID' /etc/os-release | cut -d '=' -f 2 | tr -d '"')
 
 # Define the nixpkgs channel URL and name
 channel_url="https://nixos.org/channels/nixos-$version"
