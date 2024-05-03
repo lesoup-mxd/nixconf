@@ -9,7 +9,7 @@ Obviously requires NixOS and an internet connection.
 ## Usage
 
 ```bash
-curl -L https://raw.githubusercontent.com/lesoup-mxd/nixconf/main/init.sh
+curl -L https://raw.githubusercontent.com/lesoup-mxd/nixconf/main/init.sh > ./init.sh
 chmod +x init.sh
 ./init.sh
 ```
