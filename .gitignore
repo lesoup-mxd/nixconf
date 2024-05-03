@@ -1,0 +1,4 @@
+# Ignore shell scripts
+*.sh
+README.md
+LICENSE
