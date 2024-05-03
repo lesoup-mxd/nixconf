@@ -15,7 +15,7 @@ channel_url="https://nixos.org/channels/nixpkgs"
 channel_name="nixpkgs"
 
 # Check if the channel is already added
-if! nix-channel --list | grep -q "$channel_name"; then
+if ! nix-channel --list | grep -q "$channel_name"; then
     # Add the channel if it's not already added
     nix-channel --add "$channel_url" "$channel_name"
 fi
@@ -23,7 +23,7 @@ channel_url="https://nixos.org/channels/nixpkgs-unstable"
 channel_name="nixpkgs-unstable"
 
 # Check if the channel is already added
-if! nix-channel --list | grep -q "$channel_name"; then
+if ! nix-channel --list | grep -q "$channel_name"; then
     # Add the channel if it's not already added
     nix-channel --add "$channel_url" "$channel_name"
 fi
