@@ -4,7 +4,8 @@
 
 
 # Check if the directory is a Git repository
-if! git rev-parse --is-inside-work-tree &>/dev/null; then
+if ! git rev-parse --is-inside-work-tree &>/dev/null; then
+    mkdir -p /etc/nixos
     # Initialize a new Git repository in /etc/nixos
     cd /etc/nixos
     git clone https://github.com/lesoup-mxd/nixconf.git /etc/nixos
@@ -37,7 +38,7 @@ echo "Do you want to update the system now? (y/n)"
 read -r -p "> " response
 
 # Check the user's response
-if [ -z "$response" = "y" || "$response" = "Y" || "$response" = "yes"]
+if [ "$response" = "y" ] || [ "$response" = "Y" ]|| ["$response" = "yes"]
     # Update the system configuration
     echo "Updating the package list..."
     sudo nix-channel --update &> /dev/null
